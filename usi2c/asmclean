@@ -1,0 +1,18 @@
+#!/bin.sh
+sed \
+-e "s;/.*/;;g" \
+-e "s/;.*//g" \
+-e "s/56-32/PORTB/g" \
+-e "s/55-32/DDRB/g" \
+-e "s/54-32/PINB/g" \
+-e "s/47-32/USIDR/g" \
+-e "s/46-32/USISR/g" \
+-e "s/45-32/USICR/g" \
+-e "s/__zero_reg__ = 1/&\\n\
+PORTB = 0x18\\n\
+DDRB = 0x17\\n\
+PINB = 0x16\\n\
+USIDR = 0x0f\\n\
+USISR = 0x0e\\n\
+USICR = 0x0d\\n\
+/g" \

@@ -1,0 +1,17 @@
+Reads the ADXL345 analog devices accelerometer.  Slightly above 400khz spec.
+See harleyhacking.blogspot.com
+
+Connect SCL to PB2 (pin 7) and SDA to PB0 (pin 5).  Requires pullups on these lines.
+
+Writes out fifo status then X,Y,Z as binary, then 5a,a5 at 2000000 baud to port 1 (pin 6).
+
+Uses a 10Mhz crystal on an ATTiny85/45/25.
+
+(10Mhz for 3.3v - at 5v higher rates would be possible, but the FTDI will only go to 3Mbaud)
+
+You need to do
+
+make fuse
+make upload
+
+after adjusting the makefile for your setup, mainly avrdude.

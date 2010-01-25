@@ -1,0 +1,35 @@
+This is a simple stand-alone program (not a sketch).
+
+The keys are documented in Keys.txt.
+
+1000000 baud.
+Two high speed edge measuring.
+Three serial data captures.
+
+For example, I wanted to decode the remote serial protocol on the iPod
+from a Phillips device, and the Arduino Mega can do it.
+
+IC4 and IC5 (pins 48, 49, ground where convenient) can measure pulse
+widths.  I'm using a div8, so 1 count means 0.5 microseconds (16Mhz/8).
+
+Connecting Rx to pin 48 and Tx to pin 49, I can see measured pulse
+widths on each - prefixed with the channel (4 or 5) and the edge (/ or
+\).  Within the protocol there are 0x55 characters and they end up as
+counts just over 100, so the width is just over 50 microseconds, so
+the baud rate is probably 19200.
+
+There is rise/fall time, so it won't be 104/104, but might be 96/112.
+But it is around a value close to 19200.
+
+(see edges.cap)
+
+Moving the wires to RX1 and RX2, and setting 19200 baud (8), and
+enabling the serial (X,Y) (note - I have to leave the ports disabled
+as noise or drift will generate lots of junk data).
+
+(see protocol.cap).
+
+Somewhere the text of the playlists, titles, etc. are there, and I
+can swich modes (h) to see.
+
+(see text.cap).
